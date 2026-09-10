@@ -14,7 +14,7 @@ CallMeter is a **remote** Streamable HTTP MCP server.
 ## Publish (maintainers)
 
 ```bash
-smithery mcp publish "https://api.callmeter.dev/mcp" -n @callmeter/callmeter \
+smithery mcp publish "https://api.callmeter.dev/mcp" -n dammyg/callmeter \
   --config-schema "$(cat config-schema.json)"
 ```
 

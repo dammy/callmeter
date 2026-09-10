@@ -1,0 +1,46 @@
+{
+  "name": "@dammyg/callmeter",
+  "version": "0.2.0",
+  "private": true,
+  "description": "CallMeter \u2014 pay-per-call MCP utilities for AI agents: structured extract, webpage extract, JSON Schema transform, screenshots, PDF text, receipt/invoice parsing, webhook relay/replay. Prepaid credits or x402 USDC on Base.",
+  "keywords": [
+    "mcp",
+    "x402",
+    "payments",
+    "agents",
+    "receipts",
+    "pdf",
+    "webhooks",
+    "schema",
+    "document-intelligence",
+    "screenshot",
+    "extract",
+    "invoices",
+    "callmeter"
+  ],
+  "homepage": "https://api.callmeter.dev/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dammy/callmeter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dammy/callmeter/issues"
+  },
+  "license": "MIT",
+  "author": "dammyg",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "server-card.json",
+    "smithery.yaml",
+    "config-schema.json",
+    "glama.json",
+    "icon.svg",
+    "README.md",
+    "SMITHERY.md",
+    "pricing.md",
+    "examples"
+  ],
+  "mcpName": "io.github.dammy/callmeter"
+}

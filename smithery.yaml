@@ -1,6 +1,6 @@
 # Smithery remote MCP — CallMeter
 # https://smithery.ai
-name: callmeter
+name: dammyg/callmeter
 target: remote
 runtime: typescript
 
