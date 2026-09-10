@@ -4,13 +4,14 @@
     "dammy"
   ],
   "name": "CallMeter",
-  "description": "CallMeter is a pay-per-call MCP and HTTP gateway of digital utilities for AI agents: structured text/HTML extract, public webpage extract, JSON Schema draft/validate, webpage screenshots, PDF text extract, receipt and tax-invoice parsing, and durable webhook relay/replay. Discove",
+  "description": "CallMeter turns till slips and mobile-money receipts into merchant/total/line-item JSON (parse.receipt) \u2014 demo https://api.callmeter.dev/demo/receipt-to-json \u2014 plus tax-invoice parsing, structured extract, webpage extract, JSON Schema, screenshots, PDF text, and webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits or x402 USDC on Base. Fail-closed.",
   "homepage": "https://api.callmeter.dev/",
   "repository": "https://github.com/dammy/callmeter",
   "license": "MIT",
   "url": "https://api.callmeter.dev/mcp",
   "transport": "streamable-http",
   "tags": [
+    "receipt-to-json",
     "mcp",
     "x402",
     "payments",

@@ -2,7 +2,7 @@
   "name": "@dammyg/callmeter",
   "version": "0.2.0",
   "private": true,
-  "description": "CallMeter \u2014 pay-per-call MCP utilities for AI agents: structured extract, webpage extract, JSON Schema transform, screenshots, PDF text, receipt/invoice parsing, webhook relay/replay. Prepaid credits or x402 USDC on Base.",
+  "description": "CallMeter \u2014 receipt\u2192JSON (parse.receipt) and other pay-per-call MCP utilities for AI agents: structured extract, webpage extract, JSON Schema, screenshots, PDF text, invoice parsing, webhook relay/replay. Prepaid credits or x402 USDC on Base.",
   "keywords": [
     "mcp",
     "x402",

@@ -3,9 +3,9 @@
 [![smithery badge](https://smithery.ai/badge/dammyg/callmeter)](https://smithery.ai/servers/dammyg/callmeter)
 
 
-**CallMeter** is a micropayment-gated MCP / API gateway of machine utilities for AI agents: schema transform, structured extract, screenshots, PDF text, receipt/invoice document intelligence, and durable webinfra webhook ingress/replay.
+**CallMeter** is an MCP / API gateway of **useful machine work** for AI agents — jobs like **receipt → JSON**, schema transform, structured extract, screenshots, PDF text, invoice parsing, and durable webhook ingress/replay.
 
-Pay with **prepaid credits** or **x402 USDC on Base**.
+Pay per successful call with **prepaid credits** or **x402 USDC on Base** (enabling property, not the product).
 
 | Resource | URL |
 |----------|-----|
@@ -14,6 +14,21 @@ Pay with **prepaid credits** or **x402 USDC on Base**.
 | **Pricing** | [pricing.md](./pricing.md) |
 
 > This repository is **documentation and client config only**. It does not contain proprietary kernel source.
+
+## Receipt → JSON (Campaign DOC-RECEIPT)
+
+Turn till slips, POS printouts, and mobile-money confirmations into `merchant` / `date` / `currency` / `total` / `line_items` JSON your agent can book.
+
+| | |
+|--|--|
+| **Live demo** | https://api.callmeter.dev/demo/receipt-to-json (`DOC-RECEIPT-DEMO-01`) |
+| **Skill** | `parse.receipt` — **$0.10** (10 credits) per successful parse |
+| **Evidence** | Mama Chika Provisions (NG) till-style fixture → **₦61,812.50** total, VAT 7.5%, two line items, `payment.method=pos` |
+| **JTBD** | [Receipt → JSON API](https://api.callmeter.dev/receipt-to-json-api) · [Nigerian receipt parser](https://api.callmeter.dev/nigerian-receipt-parser) |
+| **MCP** | `tools/call` name `parse.receipt` @ https://api.callmeter.dev/mcp |
+| **HTTP** | `POST /v1/docintel/extract/receipt` |
+
+Fail-closed: empty/garbage input → null merchant, total `0`, empty `line_items` (no invented money). Africa-tuned (NGN ₦/kobo, KES M-Pesa, GHS MoMo, ZAR VAT, OPay, PalmPay, Paystack, Verve POS).
 
 ## Quick start — MCP clients
 

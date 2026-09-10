@@ -22,9 +22,9 @@ startCommand:
 metadata:
   displayName: CallMeter
   description: >-
-    CallMeter is a micropayment-gated MCP and HTTP gateway of machine utilities for AI agents:
-    structured extract, schema transform, screenshots, PDF text, receipt/invoice document intelligence,
-    and durable webhook ingress/replay. Discover tools for free via tools/list, then pay per tools/call
+    CallMeter turns till slips into merchant/total/line-item JSON (parse.receipt; demo
+    https://api.callmeter.dev/demo/receipt-to-json) plus extract, schema, screenshots, PDF text,
+    invoices, and webhook relay/replay. Discover tools for free via tools/list; pay per tools/call
     with prepaid credits (X-Api-Key / Bearer) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid → 402).
   homepage: https://api.callmeter.dev/
   repository: https://github.com/dammy/callmeter

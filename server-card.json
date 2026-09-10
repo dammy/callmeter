@@ -3,8 +3,8 @@
   "name": "CallMeter",
   "displayName": "CallMeter",
   "title": "CallMeter",
-  "description": "CallMeter is a pay-per-call MCP and HTTP gateway of digital utilities for AI agents: structured text/HTML extract, public webpage extract, JSON Schema draft/validate, webpage screenshots, PDF text extract, receipt and tax-invoice parsing, and durable webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits (X-Api-Key / Bearer) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid → 402). Fail-closed billing — never charged on failed fulfillment.",
-  "shortDescription": "Pay-per-call utilities for AI agents — extract, schema, screenshot, PDF, receipts/invoices, webhook relay. Prepaid credits or x402 USDC on Base.",
+  "description": "CallMeter turns till slips and mobile-money receipts into merchant/total/line-item JSON (parse.receipt) \u2014 demo: https://api.callmeter.dev/demo/receipt-to-json \u2014 plus tax-invoice parsing, structured extract, webpage extract, JSON Schema draft/validate, screenshots, PDF text, and durable webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits (X-Api-Key / Bearer) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid \u2192 402). Fail-closed billing \u2014 never charged on failed fulfillment.",
+  "shortDescription": "Receipt\u2192JSON (parse.receipt) plus extract, schema, screenshot, PDF, invoices, webhook relay \u2014 pay-per-call for AI agents. Prepaid credits or x402 USDC on Base.",
   "homepage": "https://api.callmeter.dev/",
   "website": "https://api.callmeter.dev/",
   "documentation": "https://api.callmeter.dev/llms.txt",
@@ -75,7 +75,7 @@
     "name": "CallMeter",
     "title": "CallMeter",
     "version": "0.2.0",
-    "description": "Pay-per-call MCP utilities for AI agents — extract, schema, screenshot, PDF, receipts/invoices, webhook relay. Prepaid credits or x402 USDC on Base."
+    "description": "Pay-per-call MCP utilities for AI agents \u2014 extract, schema, screenshot, PDF, receipts/invoices, webhook relay. Prepaid credits or x402 USDC on Base."
   },
   "authentication": {
     "required": false,
@@ -83,7 +83,7 @@
       "apiKey",
       "x402"
     ],
-    "notes": "tools/list is public. tools/call requires X-Api-Key / Authorization Bearer prepaid key, or x402 PAYMENT-SIGNATURE (unpaid → 402). Fail-closed: no charge on failed fulfillment."
+    "notes": "tools/list is public. tools/call requires X-Api-Key / Authorization Bearer prepaid key, or x402 PAYMENT-SIGNATURE (unpaid \u2192 402). Fail-closed: no charge on failed fulfillment."
   },
   "configSchema": {
     "type": "object",
@@ -91,7 +91,7 @@
       "apiKey": {
         "type": "string",
         "title": "CallMeter API key",
-        "description": "Prepaid key (bf_live… / bf_test…). tools/list works without it; tools/call needs key or x402.",
+        "description": "Prepaid key (bf_live\u2026 / bf_test\u2026). tools/list works without it; tools/call needs key or x402.",
         "x-from": {
           "header": "x-api-key"
         }
@@ -106,7 +106,7 @@
         "apiKey": {
           "type": "string",
           "title": "CallMeter API key",
-          "description": "Prepaid key (bf_live… / bf_test…). tools/list works without it; tools/call needs key or x402.",
+          "description": "Prepaid key (bf_live\u2026 / bf_test\u2026). tools/list works without it; tools/call needs key or x402.",
           "x-from": {
             "header": "x-api-key"
           }
@@ -115,18 +115,18 @@
       "required": []
     }
   },
-  "instructions": "CallMeter — pay-per-call digital utilities for AI agents (Streamable HTTP MCP).\n\nWHAT IT IS\nCallMeter meters useful machine hops: turn messy text/HTML or public pages into JSON, draft/validate JSON Schema, capture screenshots, pull PDF text, parse receipts and tax invoices, and relay/replay webhooks. Use it when an agent needs a reliable paid utility instead of standing up scrapers, OCR, browsers, or webhook queues.\n\nTOOL ROUTING (prefer these names; underscore aliases still accepted on tools/call)\n• extract.structured_data — text|html → structured JSON. NOT for live URLs.\n• extract.webpage — required url → fetch public page → structured JSON (SSRF/robots fail-closed).\n• transform.json_schema — mode draft|validate|both; cheap schema hop (~2 credits).\n• capture.screenshot — url → PNG/JPEG evidence (~10 credits).\n• extract.pdf — file_base64 → page text/tables (~10 credits). Not for receipt/invoice fields.\n• parse.receipt — till/POS/mobile-money → merchant/total/line items (~10 credits).\n• parse.invoice — tax invoice → seller/VAT/lines/totals (~15 credits).\n• relay.webhook — endpoint id + body → verify/dedupe/forward (pay on successful forward).\n• replay.webhook — delivery id → redrive (destructive; pay on successful forward).\n\nAUTH & BILLING (fail-closed)\n• initialize, tools/list, prompts/list, resources/list are FREE.\n• tools/call is PAID: prepaid X-Api-Key or Authorization Bearer, OR x402 PAYMENT-SIGNATURE after HTTP 402.\n• Unpaid tools/call → 402 PAYMENT_REQUIRED. Bad key → 401. Failed upstream/fulfillment → no charge.\n• 1 credit = $0.01. Pricing: https://api.callmeter.dev/pricing — Examples: https://api.callmeter.dev/examples — llms.txt: https://api.callmeter.dev/llms.txt\n\nERRORS\nMachine codes: INVALID_INPUT | UNSUPPORTED_FORMAT | PAYMENT_REQUIRED | PAYMENT_FAILED | RATE_LIMITED | UPSTREAM_FAILURE | PROCESSING_FAILURE | TIMEOUT | INTERNAL_ERROR (each with retryable).\n\nHomepage: https://api.callmeter.dev/\nRepository: https://github.com/dammy/callmeter\nLicense: MIT\nIcon: https://api.callmeter.dev/icon.png",
+  "instructions": "CallMeter \u2014 useful machine work for AI agents (Streamable HTTP MCP). Lead job: receipt \u2192 JSON via parse.receipt.\n\nWHAT IT IS\nStart with parse.receipt: turn till slips, POS printouts, and mobile-money confirmations into merchant / date / currency / total / line_items JSON. Live demo (Mama Chika \u20a661,812.50): https://api.callmeter.dev/demo/receipt-to-json (DOC-RECEIPT-DEMO-01). Also: tax invoices, structured extract, webpage extract, JSON Schema, screenshots, PDF text, webhook relay/replay \u2014 pay per successful call instead of standing up scrapers, OCR, browsers, or webhook queues.\n\nTOOL ROUTING (prefer these names; underscore aliases still accepted on tools/call)\n\u2022 extract.structured_data \u2014 text|html \u2192 structured JSON. NOT for live URLs.\n\u2022 extract.webpage \u2014 required url \u2192 fetch public page \u2192 structured JSON (SSRF/robots fail-closed).\n\u2022 transform.json_schema \u2014 mode draft|validate|both; cheap schema hop (~2 credits).\n\u2022 capture.screenshot \u2014 url \u2192 PNG/JPEG evidence (~10 credits).\n\u2022 extract.pdf \u2014 file_base64 \u2192 page text/tables (~10 credits). Not for receipt/invoice fields.\n\u2022 parse.receipt \u2014 till/POS/mobile-money \u2192 merchant/total/line items (~10 credits).\n\u2022 parse.invoice \u2014 tax invoice \u2192 seller/VAT/lines/totals (~15 credits).\n\u2022 relay.webhook \u2014 endpoint id + body \u2192 verify/dedupe/forward (pay on successful forward).\n\u2022 replay.webhook \u2014 delivery id \u2192 redrive (destructive; pay on successful forward).\n\nAUTH & BILLING (fail-closed)\n\u2022 initialize, tools/list, prompts/list, resources/list are FREE.\n\u2022 tools/call is PAID: prepaid X-Api-Key or Authorization Bearer, OR x402 PAYMENT-SIGNATURE after HTTP 402.\n\u2022 Unpaid tools/call \u2192 402 PAYMENT_REQUIRED. Bad key \u2192 401. Failed upstream/fulfillment \u2192 no charge.\n\u2022 1 credit = $0.01. Pricing: https://api.callmeter.dev/pricing \u2014 Examples: https://api.callmeter.dev/examples \u2014 llms.txt: https://api.callmeter.dev/llms.txt\n\nERRORS\nMachine codes: INVALID_INPUT | UNSUPPORTED_FORMAT | PAYMENT_REQUIRED | PAYMENT_FAILED | RATE_LIMITED | UPSTREAM_FAILURE | PROCESSING_FAILURE | TIMEOUT | INTERNAL_ERROR (each with retryable).\n\nHomepage: https://api.callmeter.dev/\nRepository: https://github.com/dammy/callmeter\nLicense: MIT\nIcon: https://api.callmeter.dev/icon.png",
   "tools": [
     {
       "name": "extract.structured_data",
-      "description": "Extract structured JSON (emails, phones, URLs, key-values, or schema-shaped fields) from messy plain text or HTML. Call when the agent already has document text/HTML and needs machine-readable fields for the next step — not for fetching a live URL (use extract.webpage). Inputs: exactly one of text or html; optional instruction, schema, require_llm. Outputs structured JSON; fail-closed on invalid input. Paid (~5 credits / $0.05) via prepaid key or x402.",
+      "description": "Extract structured JSON (emails, phones, URLs, key-values, or schema-shaped fields) from messy plain text or HTML. Call when the agent already has document text/HTML and needs machine-readable fields for the next step \u2014 not for fetching a live URL (use extract.webpage). Inputs: exactly one of text or html; optional instruction, schema, require_llm. Outputs structured JSON; fail-closed on invalid input. Paid (~5 credits / $0.05) via prepaid key or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "text": {
             "type": "string",
-            "description": "Plain text to structure. Do not pass a URL here — use extract.webpage. Example: 'Contact Jane at jane@acme.io or +1-415-555-0100.'",
+            "description": "Plain text to structure. Do not pass a URL here \u2014 use extract.webpage. Example: 'Contact Jane at jane@acme.io or +1-415-555-0100.'",
             "examples": [
               "Contact Jane at jane@acme.io or +1-415-555-0100. Site https://acme.io"
             ]
@@ -162,7 +162,7 @@
           },
           "require_llm": {
             "type": "boolean",
-            "description": "If true and enrichment LLM unavailable → processing failure (no charge on fail-closed). Example: false",
+            "description": "If true and enrichment LLM unavailable \u2192 processing failure (no charge on fail-closed). Example: false",
             "examples": [
               false
             ]
@@ -213,7 +213,7 @@
     },
     {
       "name": "extract.webpage",
-      "description": "Fetch a public http(s) URL and return structured page facts as JSON (SSRF/robots fail-closed). Call when the agent has a page URL to understand — not when text/HTML is already in hand (use extract.structured_data) and not for a visual capture (use capture.screenshot). Inputs: required url; optional instruction, schema, require_llm. Outputs structured JSON about the page. Paid (~5 credits / $0.05) via prepaid key or x402.",
+      "description": "Fetch a public http(s) URL and return structured page facts as JSON (SSRF/robots fail-closed). Call when the agent has a page URL to understand \u2014 not when text/HTML is already in hand (use extract.structured_data) and not for a visual capture (use capture.screenshot). Inputs: required url; optional instruction, schema, require_llm. Outputs structured JSON about the page. Paid (~5 credits / $0.05) via prepaid key or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -253,7 +253,7 @@
           },
           "require_llm": {
             "type": "boolean",
-            "description": "If true and enrichment LLM unavailable → processing failure. Example: false",
+            "description": "If true and enrichment LLM unavailable \u2192 processing failure. Example: false",
             "examples": [
               false
             ]
@@ -292,7 +292,7 @@
     },
     {
       "name": "transform.json_schema",
-      "description": "Draft a JSON Schema from a sample object, or validate an instance against a schema, in one call. Call before writes when you need a deterministic schema or a cheap validity check — cheaper and more predictable than asking an LLM to invent types. Inputs: mode=draft|validate|both; sample for draft; schema+instance for validate. Outputs schema and/or validation result. Paid (~2 credits / $0.02) via prepaid key or x402.",
+      "description": "Draft a JSON Schema from a sample object, or validate an instance against a schema, in one call. Call before writes when you need a deterministic schema or a cheap validity check \u2014 cheaper and more predictable than asking an LLM to invent types. Inputs: mode=draft|validate|both; sample for draft; schema+instance for validate. Outputs schema and/or validation result. Paid (~2 credits / $0.02) via prepaid key or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -367,7 +367,7 @@
     },
     {
       "name": "capture.screenshot",
-      "description": "Render a public URL to a PNG/JPEG screenshot for vision, QA, or audit evidence. Call when you need pixels — not structured text (use extract.webpage) and not PDF bytes (use extract.pdf). Inputs: required url; optional viewport {width,height}, fullPage, format=png|jpeg. Viewport capped; SSRF/robots fail-closed. Outputs image metadata + base64. Paid (~10 credits / $0.10) via prepaid key or x402.",
+      "description": "Render a public URL to a PNG/JPEG screenshot for vision, QA, or audit evidence. Call when you need pixels \u2014 not structured text (use extract.webpage) and not PDF bytes (use extract.pdf). Inputs: required url; optional viewport {width,height}, fullPage, format=png|jpeg. Viewport capped; SSRF/robots fail-closed. Outputs image metadata + base64. Paid (~10 credits / $0.10) via prepaid key or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -385,7 +385,7 @@
           },
           "viewport": {
             "type": "object",
-            "description": "Viewport size within caps (width 320–1920, height 320–1080). Example: {\"width\":1280,\"height\":800}",
+            "description": "Viewport size within caps (width 320\u20131920, height 320\u20131080). Example: {\"width\":1280,\"height\":800}",
             "properties": {
               "width": {
                 "type": "integer",
@@ -455,14 +455,14 @@
     },
     {
       "name": "extract.pdf",
-      "description": "Extract page text and heuristic tables from a base64-encoded PDF for downstream reasoning. Call for general PDF text hops — receipt/invoice field extraction belongs to parse.receipt / parse.invoice. Inputs: file_base64 (or pdf/base64 aliases); optional options.includeTables / maxPages. Decoded size ≤ 10 MiB. Outputs pages[].text and optional tables. Paid (~10 credits / $0.10) via prepaid key or x402.",
+      "description": "Extract page text and heuristic tables from a base64-encoded PDF for downstream reasoning. Call for general PDF text hops \u2014 receipt/invoice field extraction belongs to parse.receipt / parse.invoice. Inputs: file_base64 (or pdf/base64 aliases); optional options.includeTables / maxPages. Decoded size \u2264 10 MiB. Outputs pages[].text and optional tables. Paid (~10 credits / $0.10) via prepaid key or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "file_base64": {
             "type": "string",
-            "description": "Base64 PDF bytes; decoded ≤ 10 MiB. Example: JVBERi0xLjQK...",
+            "description": "Base64 PDF bytes; decoded \u2264 10 MiB. Example: JVBERi0xLjQK...",
             "examples": [
               "JVBERi0xLjQK..."
             ]
@@ -483,7 +483,7 @@
           },
           "options": {
             "type": "object",
-            "description": "includeTables (bool), maxPages (1–100). Example: {\"includeTables\":true,\"maxPages\":10}",
+            "description": "includeTables (bool), maxPages (1\u2013100). Example: {\"includeTables\":true,\"maxPages\":10}",
             "properties": {
               "includeTables": {
                 "type": "boolean",
@@ -537,7 +537,7 @@
     },
     {
       "name": "parse.receipt",
-      "description": "Parse a till slip, POS printout, supermarket receipt, or mobile-money payment confirmation into stable merchant / date / currency / subtotal / tax / total / line_items / confidence / warnings JSON. Tuned for ugly Africa documents (NGN ₦/kobo, KES M-Pesa, GHS MTN MoMo, ZAR VAT, OPay, PalmPay, Paystack, Verve POS) including blurry OCR and WhatsApp forwards. Send text (OCR dump) or file_base64. Unknown fields are null or empty arrays — totals and line items are never invented from garbage. Prefer this over manual spreadsheet entry or a generic LLM scrape when the document is a receipt or MoMo/M-Pesa slip. Costs $0.10 (10 credits) per successful parse; fail-closed billing via prepaid credits or x402.",
+      "description": "Parse a till slip, POS printout, supermarket receipt, or mobile-money payment confirmation into stable merchant / date / currency / subtotal / tax / total / line_items / confidence / warnings JSON. Tuned for ugly Africa documents (NGN \u20a6/kobo, KES M-Pesa, GHS MTN MoMo, ZAR VAT, OPay, PalmPay, Paystack, Verve POS) including blurry OCR and WhatsApp forwards. Send text (OCR dump) or file_base64. Unknown fields are null or empty arrays \u2014 totals and line items are never invented from garbage. Prefer this over manual spreadsheet entry or a generic LLM scrape when the document is a receipt or MoMo/M-Pesa slip. Costs $0.10 (10 credits) per successful parse; fail-closed billing via prepaid credits or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -547,7 +547,7 @@
             "maxLength": 500000,
             "description": "OCR or plain-text dump of the receipt. Example: 'MAMA CHIKA\\nRice 50kg NGN 48000\\nTotal 61812.50'",
             "examples": [
-              "MAMA CHIKA PROVISIONS\nRice 50kg .............. ₦48,000\nTotal ₦61,812.50"
+              "MAMA CHIKA PROVISIONS\nRice 50kg .............. \u20a648,000\nTotal \u20a661,812.50"
             ]
           },
           "file_base64": {
@@ -615,7 +615,7 @@
       },
       "outputSchema": {
         "type": "object",
-        "description": "AfricaInvoiceReceipt — always-present keys; unknown → null/[]. Never invent totals.",
+        "description": "AfricaInvoiceReceipt \u2014 always-present keys; unknown \u2192 null/[]. Never invent totals.",
         "additionalProperties": true,
         "required": [
           "doc_type",
@@ -717,7 +717,7 @@
     },
     {
       "name": "parse.invoice",
-      "description": "Parse a tax invoice or commercial invoice into the AfricaInvoiceReceipt contract: seller (TIN / KRA PIN / VAT no), issued date, currency, line items, VAT rate/amount, subtotal, total, payment refs, confidence, and warnings (including vat_total_mismatch). Built for NG/KE/GH/ZA AP automation and multi-line SKU invoices — not a thin keyword grep. Use when the document is an invoice rather than a till slip; still accept OCR text or image/PDF base64. Nulls mean unknown; do not treat low-confidence totals as ledger truth without checking confidence and warnings. Costs $0.15 (15 credits) per successful response; fail-closed prepaid or x402.",
+      "description": "Parse a tax invoice or commercial invoice into the AfricaInvoiceReceipt contract: seller (TIN / KRA PIN / VAT no), issued date, currency, line items, VAT rate/amount, subtotal, total, payment refs, confidence, and warnings (including vat_total_mismatch). Built for NG/KE/GH/ZA AP automation and multi-line SKU invoices \u2014 not a thin keyword grep. Use when the document is an invoice rather than a till slip; still accept OCR text or image/PDF base64. Nulls mean unknown; do not treat low-confidence totals as ledger truth without checking confidence and warnings. Costs $0.15 (15 credits) per successful response; fail-closed prepaid or x402.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -795,7 +795,7 @@
       },
       "outputSchema": {
         "type": "object",
-        "description": "AfricaInvoiceReceipt — always-present keys; unknown → null/[]. Never invent totals.",
+        "description": "AfricaInvoiceReceipt \u2014 always-present keys; unknown \u2192 null/[]. Never invent totals.",
         "additionalProperties": true,
         "required": [
           "doc_type",
@@ -897,7 +897,7 @@
     },
     {
       "name": "relay.webhook",
-      "description": "Relay a third-party webhook into CallMeter: verify HMAC or shared secret, dedupe by delivery id, store the payload, and forward to the endpoint's destinations with retries. Charges 0.01 credits ($0.0001) only per successful forward — not on receive. SIDE EFFECTS: contacts external destination URLs you configured; may retry on failure. Prefer when an agent must accept provider callbacks without running its own queue. Fail-closed on billing/ceiling errors. Inputs: required id (endpoint id) plus upstream JSON body.",
+      "description": "Relay a third-party webhook into CallMeter: verify HMAC or shared secret, dedupe by delivery id, store the payload, and forward to the endpoint's destinations with retries. Charges 0.01 credits ($0.0001) only per successful forward \u2014 not on receive. SIDE EFFECTS: contacts external destination URLs you configured; may retry on failure. Prefer when an agent must accept provider callbacks without running its own queue. Fail-closed on billing/ceiling errors. Inputs: required id (endpoint id) plus upstream JSON body.",
       "inputSchema": {
         "type": "object",
         "description": "Pass endpoint id plus the upstream webhook JSON body (additionalProperties allowed).",
@@ -908,14 +908,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "CallMeter webhook endpoint id (ep_…). Example: ep_live_abc123",
+            "description": "CallMeter webhook endpoint id (ep_\u2026). Example: ep_live_abc123",
             "examples": [
               "ep_live_abc123"
             ]
           },
           "deliveryId": {
             "type": "string",
-            "description": "Optional idempotent delivery id (maps to X-Webhook-Delivery-Id). Same id within 24h dedupes — no second charge.",
+            "description": "Optional idempotent delivery id (maps to X-Webhook-Delivery-Id). Same id within 24h dedupes \u2014 no second charge.",
             "examples": [
               "deliv_01HXYZ"
             ]
@@ -968,7 +968,7 @@
     },
     {
       "name": "replay.webhook",
-      "description": "Replay a stored webhook delivery through the same forward/retry pipeline after your consumer was down. Requires API key. Charges 0.01 credits ($0.0001) per successful forward. SIDE EFFECTS / DESTRUCTIVE: re-POSTs the original payload to destinations and may bill again — do not call casually. Prefer after confirmed consumer recovery. Fail-closed on billing errors. Inputs: required id (delivery id).",
+      "description": "Replay a stored webhook delivery through the same forward/retry pipeline after your consumer was down. Requires API key. Charges 0.01 credits ($0.0001) per successful forward. SIDE EFFECTS / DESTRUCTIVE: re-POSTs the original payload to destinations and may bill again \u2014 do not call casually. Prefer after confirmed consumer recovery. Fail-closed on billing errors. Inputs: required id (delivery id).",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -1061,7 +1061,7 @@
   "prompts": [
     {
       "name": "receipt_to_json",
-      "title": "Receipt → structured JSON",
+      "title": "Receipt \u2192 structured JSON",
       "description": "Parse a till slip or mobile-money receipt with parse.receipt.",
       "arguments": [
         {
@@ -1073,7 +1073,7 @@
     },
     {
       "name": "invoice_to_json",
-      "title": "Tax invoice → structured JSON",
+      "title": "Tax invoice \u2192 structured JSON",
       "description": "Extract tax invoice fields with parse.invoice.",
       "arguments": [
         {
@@ -1085,7 +1085,7 @@
     },
     {
       "name": "webpage_to_json",
-      "title": "Webpage URL → structured JSON",
+      "title": "Webpage URL \u2192 structured JSON",
       "description": "Fetch and structure a public page with extract.webpage (url required).",
       "arguments": [
         {
