@@ -1,0 +1,54 @@
+{
+  "$schema": "https://static.smithery.ai/schemas/server-card.json",
+  "name": "CallMeter",
+  "displayName": "CallMeter",
+  "title": "CallMeter",
+  "description": "CallMeter is a pay-per-call MCP and HTTP gateway of digital utilities for AI agents: structured text/HTML extract, public webpage extract, JSON Schema draft/validate, webpage screenshots, PDF text extract, receipt and tax-invoice parsing, and durable webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits or x402 USDC on Base. Fail-closed billing.",
+  "homepage": "https://api.callmeter.dev/",
+  "documentation": "https://api.callmeter.dev/llms.txt",
+  "docs": [
+    "https://api.callmeter.dev/llms.txt",
+    "https://api.callmeter.dev/examples"
+  ],
+  "repository": "https://github.com/dammy/callmeter",
+  "license": "MIT",
+  "version": "0.2.0",
+  "icon": "https://api.callmeter.dev/icon.svg",
+  "categories": [
+    "mcp",
+    "payments",
+    "agents",
+    "document-intelligence",
+    "webhooks",
+    "utilities"
+  ],
+  "tags": [
+    "mcp",
+    "x402",
+    "payments",
+    "agents",
+    "receipts",
+    "pdf",
+    "webhooks",
+    "schema",
+    "document-intelligence"
+  ],
+  "url": "https://api.callmeter.dev/mcp",
+  "transport": "streamable-http",
+  "serverInfo": {
+    "name": "CallMeter",
+    "title": "CallMeter",
+    "version": "0.2.0"
+  },
+  "tools": [
+    "extract_structured_data",
+    "extract_webpage",
+    "transform_json_schema",
+    "capture_webpage_screenshot",
+    "extract_pdf",
+    "parse_receipt",
+    "parse_invoice",
+    "relay_webhook",
+    "replay_webhook"
+  ]
+}

@@ -1,4 +1,12 @@
 {
   "$schema": "https://glama.ai/mcp/schemas/server.json",
-  "maintainers": ["dammy"]
+  "maintainers": ["dammy"],
+  "name": "CallMeter",
+  "description": "Micropayment-gated MCP utilities for agents: extract, schema, screenshot, PDF, receipts/invoices, webhook relay. Prepaid credits or x402 USDC on Base.",
+  "homepage": "https://api.callmeter.dev/",
+  "repository": "https://github.com/dammy/callmeter",
+  "license": "MIT",
+  "url": "https://api.callmeter.dev/mcp",
+  "transport": "streamable-http",
+  "tags": ["mcp", "x402", "payments", "agents", "receipts", "pdf", "webhooks", "schema", "document-intelligence"]
 }

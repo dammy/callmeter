@@ -1,0 +1,51 @@
+# Smithery remote MCP — CallMeter
+# https://smithery.ai
+name: callmeter
+target: remote
+runtime: typescript
+
+startCommand:
+  type: http
+  url: https://api.callmeter.dev/mcp
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        title: CallMeter API key
+        description: Prepaid key (bf_live… / bf_test…). tools/list works without it; tools/call needs key or x402.
+        x-from:
+          header: x-api-key
+    required: []
+  exampleConfig: {}
+
+metadata:
+  displayName: CallMeter
+  description: >-
+    CallMeter is a micropayment-gated MCP and HTTP gateway of machine utilities for AI agents:
+    structured extract, schema transform, screenshots, PDF text, receipt/invoice document intelligence,
+    and durable webhook ingress/replay. Discover tools for free via tools/list, then pay per tools/call
+    with prepaid credits (X-Api-Key / Bearer) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid → 402).
+  homepage: https://api.callmeter.dev/
+  repository: https://github.com/dammy/callmeter
+  license: MIT
+  categories:
+    - mcp
+    - payments
+    - agents
+    - document-intelligence
+    - webhooks
+    - utilities
+  tags:
+    - mcp
+    - x402
+    - payments
+    - agents
+    - receipts
+    - pdf
+    - webhooks
+    - schema
+    - document-intelligence
+    - screenshot
+    - extract
+    - invoices

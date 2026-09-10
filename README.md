@@ -1,6 +1,6 @@
 # Callmeter
 
-**Callmeter** is a customer-facing MCP / API gateway for metered AI skills: schema, extract, screenshot, PDF, receipts, invoices, and webinfra webhook ingress/replay.
+**CallMeter** is a micropayment-gated MCP / API gateway of machine utilities for AI agents: schema transform, structured extract, screenshots, PDF text, receipt/invoice document intelligence, and durable webinfra webhook ingress/replay.
 
 Pay with **prepaid credits** or **x402 USDC on Base**.
 
@@ -55,6 +55,7 @@ Same URL works for any MCP client that supports **Streamable HTTP** (POST JSON-R
 ### Smithery / Glama
 
 - Config schema: [`config-schema.json`](./config-schema.json) (`apiKey` → `x-api-key`)
+- Config / metadata: [`smithery.yaml`](./smithery.yaml), [`server-card.json`](./server-card.json)
 - Notes: [`SMITHERY.md`](./SMITHERY.md)
 - Glama: [`glama.json`](./glama.json)
 
@@ -113,6 +114,8 @@ curl -sS -X POST https://api.callmeter.dev/mcp \
 | [openapi.md](./openapi.md) | Points to live OpenAPI |
 | [SECURITY.md](./SECURITY.md) | Vulnerability contact |
 | [SMITHERY.md](./SMITHERY.md) | Registry publish notes |
+| [smithery.yaml](./smithery.yaml) | Smithery remote MCP metadata |
+| [server-card.json](./server-card.json) | Static server-card mirror |
 | [examples/](./examples/) | Curl scripts (initialize, list, call, 402) |
 
 ## License
