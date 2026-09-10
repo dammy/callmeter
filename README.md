@@ -1,5 +1,8 @@
 # Callmeter
 
+[![smithery badge](https://smithery.ai/badge/dammyg/callmeter)](https://smithery.ai/servers/dammyg/callmeter)
+
+
 **CallMeter** is a micropayment-gated MCP / API gateway of machine utilities for AI agents: schema transform, structured extract, screenshots, PDF text, receipt/invoice document intelligence, and durable webinfra webhook ingress/replay.
 
 Pay with **prepaid credits** or **x402 USDC on Base**.
@@ -72,6 +75,12 @@ Same URL works for any MCP client that supports **Streamable HTTP** (POST JSON-R
 
 Credit peg: **1 credit = $0.01**, min top-up **$10**. See [pricing.md](./pricing.md).
 
+## MCP tools (canonical)
+
+`extract.structured_data` · `extract.webpage` · `transform.json_schema` · `capture.screenshot` · `extract.pdf` · `parse.receipt` · `parse.invoice` · `relay.webhook` · `replay.webhook`
+
+Underscore aliases remain accepted on `tools/call` for one release.
+
 ## Example curls
 
 See [`examples/`](./examples/) for scripts. Placeholders only — never commit real keys.
@@ -91,7 +100,7 @@ curl -sS -X POST https://api.callmeter.dev/mcp \
 curl -sS -i -X POST https://api.callmeter.dev/mcp \
   -H 'content-type: application/json' \
   -H 'accept: application/json, text/event-stream' \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"schema","arguments":{"url":"https://example.com"}}}'
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"transform.json_schema","arguments":{"mode":"draft","sample":{"a":1}}}}'
 ```
 
 Expect **HTTP 402** with payment-required details when no prepaid key is sent.
@@ -103,7 +112,7 @@ curl -sS -X POST https://api.callmeter.dev/mcp \
   -H 'content-type: application/json' \
   -H 'accept: application/json, text/event-stream' \
   -H 'x-api-key: YOUR_API_KEY' \
-  -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"schema","arguments":{"url":"https://example.com"}}}'
+  -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"transform.json_schema","arguments":{"mode":"draft","sample":{"a":1}}}}'
 ```
 
 ## Docs in this repo
