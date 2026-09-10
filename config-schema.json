@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "apiKey": {
+      "type": "string",
+      "title": "Callmeter API key",
+      "description": "Prepaid key (bf_live_… / bf_test_…). tools/list works without it; tools/call needs key or x402.",
+      "x-from": { "header": "x-api-key" }
+    }
+  },
+  "required": []
+}
