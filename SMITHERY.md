@@ -29,3 +29,12 @@ Or use the Smithery UI: https://smithery.ai/new → enter `https://api.callmeter
 - Prepaid clients send `x-api-key: YOUR_API_KEY` (or `Authorization: Bearer YOUR_API_KEY`).
 
 See also [`glama.json`](./glama.json) for Glama registry indexing.
+
+## Tool names (Smithery / MCP)
+
+Canonical `tools/list` names use Smithery-style dotted capability verbs:
+
+- `extract.structured_data`, `extract.webpage`, `transform.json_schema`, `capture.screenshot`, `extract.pdf`
+- `parse.receipt`, `parse.invoice`, `relay.webhook`, `replay.webhook`
+
+Underscore aliases (e.g. `extract_webpage`, `parse_receipt`) and legacy product-prefixed names still resolve on `tools/call` for one release.

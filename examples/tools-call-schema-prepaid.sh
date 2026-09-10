@@ -14,8 +14,8 @@ curl -sS -X POST https://api.callmeter.dev/mcp \
     "id": 3,
     "method": "tools/call",
     "params": {
-      "name": "schema",
-      "arguments": { "url": "https://example.com" }
+      "name": "transform.json_schema",
+      "arguments": { "mode": "draft", "sample": { "a": 1 } }
     }
   }'
 echo
