@@ -2,6 +2,7 @@
 
 [![smithery badge](https://smithery.ai/badge/dammyg/callmeter)](https://smithery.ai/servers/dammyg/callmeter)
 
+> **First paid job:** parse a receipt → structured JSON for **~$0.10** (prepaid credits or x402 USDC on Base). Try the public demo https://api.callmeter.dev/demo/receipt-to-json then pay on `tools/call`. `tools/list` is free.
 
 **CallMeter** is an MCP / API gateway of **useful machine work** for AI agents — jobs like **receipt → JSON**, schema transform, structured extract, screenshots, PDF text, invoice parsing, and durable webhook ingress/replay.
 
