@@ -5,7 +5,7 @@
 
 > **First paid job:** parse a receipt → structured JSON for **~$0.10** (prepaid credits or x402 USDC on Base). Try the public demo https://api.callmeter.dev/demo/receipt-to-json then pay on `tools/call`. `tools/list` is free.
 
-**CallMeter** is an MCP / API gateway of **useful machine work** for AI agents — jobs like **receipt → JSON**, schema transform, structured extract, screenshots, PDF text, invoice parsing, and durable webhook ingress/replay.
+**CallMeter** is an MCP / API gateway of **useful machine work** for AI agents — jobs like **receipt → JSON**, schema transform, schema breaking-change detect, structured extract, screenshots, PDF text, invoice parsing, and durable webhook ingress/replay.
 
 Pay per successful call with **prepaid credits** or **x402 USDC on Base** (enabling property, not the product).
 
@@ -31,6 +31,20 @@ Turn till slips, POS printouts, and mobile-money confirmations into `merchant` /
 | **HTTP** | `POST /v1/docintel/extract/receipt` |
 
 Fail-closed: empty/garbage input → null merchant, total `0`, empty `line_items` (no invented money). Africa-tuned (NGN ₦/kobo, KES M-Pesa, GHS MoMo, ZAR VAT, OPay, PalmPay, Paystack, Verve POS).
+
+## Schema breaking-change detect
+
+Compare two OpenAPI or JSON Schema documents and report producer-compat breaking changes. Deterministic — no LLM.
+
+| | |
+|--|--|
+| **Skill** | `detect.schema_breaking_changes` — **$0.05** (5 credits / 50000 USDC atomic) |
+| **MCP** | `tools/call` name `detect.schema_breaking_changes` @ https://api.callmeter.dev/mcp |
+| **HTTP** | `POST /v1/agentutils/diff` |
+| **Aliases** | `detect_schema_breaking_changes`, `agentutils_schema_diff` |
+
+Body: `{before, after, mode?: auto|json-schema|openapi, include_nonbreaking?: true}`  
+Out: `{mode, breaking, breaking_count, nonbreaking_count, changes[], summary}`
 
 ## Quick start — MCP clients
 
@@ -86,6 +100,7 @@ Same URL works for any MCP client that supports **Streamable HTTP** (POST JSON-R
 | Prepaid | `x-api-key: YOUR_API_KEY` or `Authorization: Bearer YOUR_API_KEY` |
 | x402 | Unpaid `tools/call` → **HTTP 402** + payment requirements (USDC on Base) |
 
+- Human checkout: mint an API key and buy min **$10** / 1000 credits via Paystack at https://api.callmeter.dev/signup
 - `initialize` / `tools/list` → **200** without a key  
 - `tools/call` unpaid → **402**  
 - Bad key → **401**
@@ -94,7 +109,7 @@ Credit peg: **1 credit = $0.01**, min top-up **$10**. See [pricing.md](./pricing
 
 ## MCP tools (canonical)
 
-`extract.structured_data` · `extract.webpage` · `transform.json_schema` · `capture.screenshot` · `extract.pdf` · `parse.receipt` · `parse.invoice` · `relay.webhook` · `replay.webhook`
+`extract.structured_data` · `extract.webpage` · `transform.json_schema` · `detect.schema_breaking_changes` · `capture.screenshot` · `extract.pdf` · `parse.receipt` · `parse.invoice` · `relay.webhook` · `replay.webhook`
 
 Underscore aliases remain accepted on `tools/call` for one release.
 
