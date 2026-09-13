@@ -9,7 +9,7 @@ Callmeter uses **prepaid credits** and optional **x402 USDC on Base**.
 | 1 credit | **$0.01** USD |
 | Minimum top-up | **$10** |
 
-Buy credits and manage keys at the Callmeter dashboard / pricing page for your account.
+Mint an API key and buy credits (Paystack, min **$10** / 1000 credits) at https://api.callmeter.dev/signup.
 
 ## Published skill prices (drafts)
 
@@ -20,9 +20,12 @@ Prices below are in USD and credit equivalents (1 credit = $0.01).
 | Skill | USD | Credits |
 |-------|-----|---------|
 | schema | $0.02 | 2 cr |
+| schema breaking-change (`detect.schema_breaking_changes`) | $0.05 | 5 cr |
 | extract | $0.05 | 5 cr |
 | screenshot | $0.10 | 10 cr |
 | pdf | $0.10 | 10 cr |
+
+`detect.schema_breaking_changes` — `POST /v1/agentutils/diff` — $0.05 / 5 credits / 50000 USDC atomic. Aliases: `detect_schema_breaking_changes`, `agentutils_schema_diff`.
 
 ### Documents
 

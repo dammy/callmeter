@@ -13,7 +13,7 @@ startCommand:
       apiKey:
         type: string
         title: CallMeter API key
-        description: Prepaid key (bf_live… / bf_test…). tools/list works without it; tools/call needs key or x402.
+        description: Prepaid key (bf_live… / bf_test…). Mint a key and buy min $10 / 1000 credits via Paystack at https://api.callmeter.dev/signup. tools/list works without it; tools/call needs key or x402.
         x-from:
           header: x-api-key
     required: []
@@ -23,9 +23,11 @@ metadata:
   displayName: CallMeter
   description: >-
     CallMeter turns till slips into merchant/total/line-item JSON (parse.receipt; demo
-    https://api.callmeter.dev/demo/receipt-to-json) plus extract, schema, screenshots, PDF text,
-    invoices, and webhook relay/replay. Discover tools for free via tools/list; pay per tools/call
-    with prepaid credits (X-Api-Key / Bearer) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid → 402).
+    https://api.callmeter.dev/demo/receipt-to-json) plus extract, schema, schema breaking-change
+    detect (detect.schema_breaking_changes), screenshots, PDF text, invoices, and webhook
+    relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits
+    (X-Api-Key / Bearer; mint + Paystack min $10 at https://api.callmeter.dev/signup) or x402
+    USDC on Base (PAYMENT-SIGNATURE; unpaid → 402).
   homepage: https://api.callmeter.dev/
   repository: https://github.com/dammy/callmeter
   license: MIT

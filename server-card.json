@@ -3,8 +3,8 @@
   "name": "CallMeter",
   "displayName": "CallMeter",
   "title": "CallMeter",
-  "description": "CallMeter turns till slips and mobile-money receipts into merchant/total/line-item JSON (parse.receipt) \u2014 demo: https://api.callmeter.dev/demo/receipt-to-json \u2014 plus tax-invoice parsing, structured extract, webpage extract, JSON Schema draft/validate, screenshots, PDF text, and durable webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits (X-Api-Key / Bearer) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid \u2192 402). Fail-closed billing \u2014 never charged on failed fulfillment.",
-  "shortDescription": "Receipt\u2192JSON (parse.receipt) plus extract, schema, screenshot, PDF, invoices, webhook relay \u2014 pay-per-call for AI agents. Prepaid credits or x402 USDC on Base.",
+  "description": "CallMeter turns till slips and mobile-money receipts into merchant/total/line-item JSON (parse.receipt) \u2014 demo: https://api.callmeter.dev/demo/receipt-to-json \u2014 plus tax-invoice parsing, structured extract, webpage extract, JSON Schema draft/validate, schema breaking-change detect (detect.schema_breaking_changes), screenshots, PDF text, and durable webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits (X-Api-Key / Bearer; mint + Paystack min $10 at https://api.callmeter.dev/signup) or x402 USDC on Base (PAYMENT-SIGNATURE; unpaid \u2192 402). Fail-closed billing \u2014 never charged on failed fulfillment.",
+  "shortDescription": "Receipt\u2192JSON (parse.receipt) plus extract, schema, schema breaking-change detect, screenshot, PDF, invoices, webhook relay \u2014 pay-per-call for AI agents. Prepaid credits (https://api.callmeter.dev/signup) or x402 USDC on Base.",
   "homepage": "https://api.callmeter.dev/",
   "website": "https://api.callmeter.dev/",
   "documentation": "https://api.callmeter.dev/llms.txt",
@@ -75,7 +75,7 @@
     "name": "CallMeter",
     "title": "CallMeter",
     "version": "0.2.0",
-    "description": "Pay-per-call MCP utilities for AI agents \u2014 extract, schema, screenshot, PDF, receipts/invoices, webhook relay. Prepaid credits or x402 USDC on Base."
+    "description": "Pay-per-call MCP utilities for AI agents \u2014 extract, schema, schema breaking-change detect, screenshot, PDF, receipts/invoices, webhook relay. Prepaid credits (https://api.callmeter.dev/signup) or x402 USDC on Base."
   },
   "authentication": {
     "required": false,
@@ -83,7 +83,7 @@
       "apiKey",
       "x402"
     ],
-    "notes": "tools/list is public. tools/call requires X-Api-Key / Authorization Bearer prepaid key, or x402 PAYMENT-SIGNATURE (unpaid \u2192 402). Fail-closed: no charge on failed fulfillment."
+    "notes": "tools/list is public. tools/call requires X-Api-Key / Authorization Bearer prepaid key (mint + Paystack min $10 / 1000 credits at https://api.callmeter.dev/signup), or x402 PAYMENT-SIGNATURE (unpaid \u2192 402). Fail-closed: no charge on failed fulfillment."
   },
   "configSchema": {
     "type": "object",
@@ -91,7 +91,7 @@
       "apiKey": {
         "type": "string",
         "title": "CallMeter API key",
-        "description": "Prepaid key (bf_live\u2026 / bf_test\u2026). tools/list works without it; tools/call needs key or x402.",
+        "description": "Prepaid key (bf_live\u2026 / bf_test\u2026). Mint a key and buy min $10 / 1000 credits via Paystack at https://api.callmeter.dev/signup. tools/list works without it; tools/call needs key or x402.",
         "x-from": {
           "header": "x-api-key"
         }
@@ -106,7 +106,7 @@
         "apiKey": {
           "type": "string",
           "title": "CallMeter API key",
-          "description": "Prepaid key (bf_live\u2026 / bf_test\u2026). tools/list works without it; tools/call needs key or x402.",
+          "description": "Prepaid key (bf_live\u2026 / bf_test\u2026). Mint a key and buy min $10 / 1000 credits via Paystack at https://api.callmeter.dev/signup. tools/list works without it; tools/call needs key or x402.",
           "x-from": {
             "header": "x-api-key"
           }
@@ -115,7 +115,7 @@
       "required": []
     }
   },
-  "instructions": "CallMeter \u2014 useful machine work for AI agents (Streamable HTTP MCP). Lead job: receipt \u2192 JSON via parse.receipt.\n\nWHAT IT IS\nStart with parse.receipt: turn till slips, POS printouts, and mobile-money confirmations into merchant / date / currency / total / line_items JSON. Live demo (Mama Chika \u20a661,812.50): https://api.callmeter.dev/demo/receipt-to-json (DOC-RECEIPT-DEMO-01). Also: tax invoices, structured extract, webpage extract, JSON Schema, screenshots, PDF text, webhook relay/replay \u2014 pay per successful call instead of standing up scrapers, OCR, browsers, or webhook queues.\n\nTOOL ROUTING (prefer these names; underscore aliases still accepted on tools/call)\n\u2022 extract.structured_data \u2014 text|html \u2192 structured JSON. NOT for live URLs.\n\u2022 extract.webpage \u2014 required url \u2192 fetch public page \u2192 structured JSON (SSRF/robots fail-closed).\n\u2022 transform.json_schema \u2014 mode draft|validate|both; cheap schema hop (~2 credits).\n\u2022 capture.screenshot \u2014 url \u2192 PNG/JPEG evidence (~10 credits).\n\u2022 extract.pdf \u2014 file_base64 \u2192 page text/tables (~10 credits). Not for receipt/invoice fields.\n\u2022 parse.receipt \u2014 till/POS/mobile-money \u2192 merchant/total/line items (~10 credits).\n\u2022 parse.invoice \u2014 tax invoice \u2192 seller/VAT/lines/totals (~15 credits).\n\u2022 relay.webhook \u2014 endpoint id + body \u2192 verify/dedupe/forward (pay on successful forward).\n\u2022 replay.webhook \u2014 delivery id \u2192 redrive (destructive; pay on successful forward).\n\nAUTH & BILLING (fail-closed)\n\u2022 initialize, tools/list, prompts/list, resources/list are FREE.\n\u2022 tools/call is PAID: prepaid X-Api-Key or Authorization Bearer, OR x402 PAYMENT-SIGNATURE after HTTP 402.\n\u2022 Unpaid tools/call \u2192 402 PAYMENT_REQUIRED. Bad key \u2192 401. Failed upstream/fulfillment \u2192 no charge.\n\u2022 1 credit = $0.01. Pricing: https://api.callmeter.dev/pricing \u2014 Examples: https://api.callmeter.dev/examples \u2014 llms.txt: https://api.callmeter.dev/llms.txt\n\nERRORS\nMachine codes: INVALID_INPUT | UNSUPPORTED_FORMAT | PAYMENT_REQUIRED | PAYMENT_FAILED | RATE_LIMITED | UPSTREAM_FAILURE | PROCESSING_FAILURE | TIMEOUT | INTERNAL_ERROR (each with retryable).\n\nHomepage: https://api.callmeter.dev/\nRepository: https://github.com/dammy/callmeter\nLicense: MIT\nIcon: https://api.callmeter.dev/icon.png",
+  "instructions": "CallMeter \u2014 useful machine work for AI agents (Streamable HTTP MCP). Lead job: receipt \u2192 JSON via parse.receipt.\n\nWHAT IT IS\nStart with parse.receipt: turn till slips, POS printouts, and mobile-money confirmations into merchant / date / currency / total / line_items JSON. Live demo (Mama Chika \u20a661,812.50): https://api.callmeter.dev/demo/receipt-to-json (DOC-RECEIPT-DEMO-01). Also: tax invoices, structured extract, webpage extract, JSON Schema, schema breaking-change detect, screenshots, PDF text, webhook relay/replay \u2014 pay per successful call instead of standing up scrapers, OCR, browsers, or webhook queues.\n\nTOOL ROUTING (prefer these names; underscore aliases still accepted on tools/call)\n\u2022 extract.structured_data \u2014 text|html \u2192 structured JSON. NOT for live URLs.\n\u2022 extract.webpage \u2014 required url \u2192 fetch public page \u2192 structured JSON (SSRF/robots fail-closed).\n\u2022 transform.json_schema \u2014 mode draft|validate|both; cheap schema hop (~2 credits).\n\u2022 detect.schema_breaking_changes \u2014 before/after OpenAPI or JSON Schema \u2192 producer-compat breaking-change report (~5 credits / $0.05). Aliases: detect_schema_breaking_changes, agentutils_schema_diff. HTTP POST /v1/agentutils/diff.\n\u2022 capture.screenshot \u2014 url \u2192 PNG/JPEG evidence (~10 credits).\n\u2022 extract.pdf \u2014 file_base64 \u2192 page text/tables (~10 credits). Not for receipt/invoice fields.\n\u2022 parse.receipt \u2014 till/POS/mobile-money \u2192 merchant/total/line items (~10 credits).\n\u2022 parse.invoice \u2014 tax invoice \u2192 seller/VAT/lines/totals (~15 credits).\n\u2022 relay.webhook \u2014 endpoint id + body \u2192 verify/dedupe/forward (pay on successful forward).\n\u2022 replay.webhook \u2014 delivery id \u2192 redrive (destructive; pay on successful forward).\n\nAUTH & BILLING (fail-closed)\n\u2022 initialize, tools/list, prompts/list, resources/list are FREE.\n\u2022 tools/call is PAID: prepaid X-Api-Key or Authorization Bearer, OR x402 PAYMENT-SIGNATURE after HTTP 402.\n\u2022 Prepaid checkout: mint a key + Paystack min $10 / 1000 credits at https://api.callmeter.dev/signup.\n\u2022 Unpaid tools/call \u2192 402 PAYMENT_REQUIRED. Bad key \u2192 401. Failed upstream/fulfillment \u2192 no charge.\n\u2022 1 credit = $0.01. Pricing: https://api.callmeter.dev/pricing \u2014 Examples: https://api.callmeter.dev/examples \u2014 llms.txt: https://api.callmeter.dev/llms.txt\n\nERRORS\nMachine codes: INVALID_INPUT | UNSUPPORTED_FORMAT | PAYMENT_REQUIRED | PAYMENT_FAILED | RATE_LIMITED | UPSTREAM_FAILURE | PROCESSING_FAILURE | TIMEOUT | INTERNAL_ERROR (each with retryable).\n\nHomepage: https://api.callmeter.dev/\nRepository: https://github.com/dammy/callmeter\nLicense: MIT\nIcon: https://api.callmeter.dev/icon.png",
   "tools": [
     {
       "name": "extract.structured_data",
@@ -361,6 +361,96 @@
             "schema": {
               "type": "object"
             }
+          }
+        ]
+      }
+    },
+    {
+      "name": "detect.schema_breaking_changes",
+      "description": "Detect breaking OpenAPI or JSON Schema changes between two versions (producer-compat, no LLM). Call when you need a deterministic breaking-change check before publishing an API or schema change \u2014 prefer transform.json_schema to draft/validate a single document. Inputs: required before + after documents; optional mode=auto|json-schema|openapi; optional include_nonbreaking. Outputs mode, breaking flag, breaking_count, nonbreaking_count, changes[], summary. Paid (~5 credits / $0.05 / 50000 USDC atomic) via prepaid key or x402. HTTP POST /v1/agentutils/diff. Aliases: detect_schema_breaking_changes, agentutils_schema_diff.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "before",
+          "after"
+        ],
+        "properties": {
+          "before": {
+            "description": "Prior OpenAPI or JSON Schema document. Example: {\"type\":\"object\",\"properties\":{\"email\":{\"type\":\"string\"}},\"required\":[\"email\"]}",
+            "examples": [
+              {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email"
+                ]
+              }
+            ]
+          },
+          "after": {
+            "description": "Candidate OpenAPI or JSON Schema document. Example: {\"type\":\"object\",\"properties\":{\"email\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"required\":[\"email\",\"name\"]}",
+            "examples": [
+              {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email",
+                  "name"
+                ]
+              }
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "json-schema",
+              "openapi"
+            ],
+            "description": "Diff mode. Example: auto",
+            "examples": [
+              "auto"
+            ]
+          },
+          "include_nonbreaking": {
+            "type": "boolean",
+            "description": "Include non-breaking changes in the result. Example: true",
+            "examples": [
+              true
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "description": "Result with mode, breaking, breaking_count, nonbreaking_count, changes[], summary.",
+        "additionalProperties": true,
+        "examples": [
+          {
+            "mode": "json-schema",
+            "breaking": true,
+            "breaking_count": 1,
+            "nonbreaking_count": 0,
+            "changes": [],
+            "summary": "1 breaking change"
           }
         ]
       }
