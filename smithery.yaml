@@ -13,7 +13,7 @@ startCommand:
       apiKey:
         type: string
         title: CallMeter API key
-        description: Prepaid key (bf_live… / bf_test…). Mint a key and buy min $10 / 1000 credits via Paystack at https://api.callmeter.dev/signup. tools/list works without it; tools/call needs key or x402.
+        description: Optional X-Api-Key for existing prepaid balance. New charges use x402. No Paystack top-up. tools/list works without it; tools/call needs key or x402.
         x-from:
           header: x-api-key
     required: []
@@ -22,12 +22,16 @@ startCommand:
 metadata:
   displayName: CallMeter
   description: >-
-    CallMeter turns till slips into merchant/total/line-item JSON (parse.receipt; demo
-    https://api.callmeter.dev/demo/receipt-to-json) plus extract, schema, schema breaking-change
-    detect (detect.schema_breaking_changes), screenshots, PDF text, invoices, and webhook
-    relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits
-    (X-Api-Key / Bearer; mint + Paystack min $10 at https://api.callmeter.dev/signup) or x402
-    USDC on Base (PAYMENT-SIGNATURE; unpaid → 402).
+    First paid job: parse a receipt → structured JSON ≈ $0.10 via x402 USDC on Base.
+    Demo (free to try the UX): https://api.callmeter.dev/demo/receipt-to-json
+    Pay path: unpaid tools/call or POST /v1/docintel/extract/receipt → HTTP 402 → settle x402 on Base. Discovery: https://api.callmeter.dev/.well-known/x402
+    Signup (API key / ledger identity; no card checkout): https://api.callmeter.dev/signup
+
+    CallMeter is crypto-only by default. Prepaid fiat (Paystack/Flutterwave) is unavailable until CallMeter-native fiat returns. Existing prepaid balances still debit if present; new charges use x402.
+
+    Also: schema breaking-change check ≈ $0.05 (detect.schema_breaking_changes / POST /v1/agentutils/diff). tools/list is free; tools/call is paid. Fail-closed — never charged on failed fulfillment.
+
+    MCP: https://api.callmeter.dev/mcp
   homepage: https://api.callmeter.dev/
   repository: https://github.com/dammy/callmeter
   license: MIT

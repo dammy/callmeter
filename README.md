@@ -3,11 +3,11 @@
 <!-- Smithery /badge/ returned 500 as of 2026-09-12; restore when they fix it. -->
 [![Smithery](https://img.shields.io/badge/Smithery-dammyg%2Fcallmeter-0F172A?style=flat)](https://smithery.ai/servers/dammyg/callmeter)
 
-> **First paid job:** parse a receipt → structured JSON for **~$0.10** (prepaid credits or x402 USDC on Base). Try the public demo https://api.callmeter.dev/demo/receipt-to-json then pay on `tools/call`. `tools/list` is free.
+> **First paid job:** parse a receipt → structured JSON for **~$0.10 via x402 USDC on Base**. Try the public demo https://api.callmeter.dev/demo/receipt-to-json then pay on `tools/call`. `tools/list` is free. Prepaid fiat (Paystack/Flutterwave) **unavailable**.
 
 **CallMeter** is an MCP / API gateway of **useful machine work** for AI agents — jobs like **receipt → JSON**, schema transform, schema breaking-change detect, structured extract, screenshots, PDF text, invoice parsing, and durable webhook ingress/replay.
 
-Pay per successful call with **prepaid credits** or **x402 USDC on Base** (enabling property, not the product).
+Pay per successful call with **x402 USDC on Base** (default). Existing prepaid balances still debit if present; **new fiat top-ups closed**.
 
 | Resource | URL |
 |----------|-----|
@@ -65,7 +65,7 @@ Add a remote MCP server using Streamable HTTP. Example `claude_desktop_config.js
 }
 ```
 
-Replace `YOUR_API_KEY` with your prepaid key. Leave the header out to explore `tools/list` (unauthenticated); paid `tools/call` will return **402** for x402 flow.
+Leave the header out to explore `tools/list` (unauthenticated); unpaid `tools/call` returns **402** for x402. Optional `YOUR_API_KEY` only if an existing ledger balance remains — no Paystack top-up.
 
 ### Cursor
 
@@ -97,15 +97,15 @@ Same URL works for any MCP client that supports **Streamable HTTP** (POST JSON-R
 
 | Mode | How |
 |------|-----|
-| Prepaid | `x-api-key: YOUR_API_KEY` or `Authorization: Bearer YOUR_API_KEY` |
-| x402 | Unpaid `tools/call` → **HTTP 402** + payment requirements (USDC on Base) |
+| x402 (default) | Unpaid tools/call or unpaid HTTP skill → HTTP 402 → settle USDC on Base |
+| Existing prepaid key | x-api-key / Bearer — only if balance already on ledger |
 
-- Human checkout: mint an API key and buy min **$10** / 1000 credits via Paystack at https://api.callmeter.dev/signup
-- `initialize` / `tools/list` → **200** without a key  
-- `tools/call` unpaid → **402**  
+- Human fiat checkout / Paystack / Flutterwave: **unavailable** (FIAT_MIX_CLOSED)
+- Signup: https://api.callmeter.dev/signup — mint key only; no card packs
+- `initialize` / `tools/list` → **200** without a key
+- `tools/call` unpaid → **402**
 - Bad key → **401**
-
-Credit peg: **1 credit = $0.01**, min top-up **$10**. See [pricing.md](./pricing.md).
+- Credit peg: 1 credit = $0.01 (ledger equivalence; not a buyable pack while fiat closed). See [pricing.md](./pricing.md).
 
 ## MCP tools (canonical)
 
@@ -137,7 +137,7 @@ curl -sS -i -X POST https://api.callmeter.dev/mcp \
 
 Expect **HTTP 402** with payment-required details when no prepaid key is sent.
 
-### Prepaid schema call
+### Existing-balance schema call
 
 ```bash
 curl -sS -X POST https://api.callmeter.dev/mcp \
