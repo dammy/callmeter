@@ -4,22 +4,23 @@
     "dammy"
   ],
   "name": "CallMeter",
-  "description": "CallMeter turns till slips and mobile-money receipts into merchant/total/line-item JSON (parse.receipt) \u2014 demo https://api.callmeter.dev/demo/receipt-to-json \u2014 plus tax-invoice parsing, structured extract, webpage extract, JSON Schema, screenshots, PDF text, and webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with prepaid credits or x402 USDC on Base. Fail-closed.",
+  "description": "Near-term paid hop: JSON Schema draft/validate (transform.json_schema ≈ $0.02; unpaid tools/call → HTTP 402, x402 USDC on Base). Receipt→JSON (parse.receipt ≈ $0.10) remains demo/depth — demo https://api.callmeter.dev/demo/receipt-to-json — plus tax-invoice parsing, structured extract, webpage extract, screenshots, PDF text, and webhook relay/replay. Discover tools for free via tools/list; pay per tools/call with x402 USDC on Base (default). Prepaid fiat packs closed; existing balances still debit. Fail-closed.",
   "homepage": "https://api.callmeter.dev/",
   "repository": "https://github.com/dammy/callmeter",
   "license": "MIT",
   "url": "https://api.callmeter.dev/mcp",
   "transport": "streamable-http",
   "tags": [
-    "receipt-to-json",
+    "json-schema",
+    "schema",
     "mcp",
     "x402",
     "payments",
     "agents",
+    "receipt-to-json",
     "receipts",
     "pdf",
     "webhooks",
-    "schema",
     "document-intelligence"
   ],
   "icon": "https://api.callmeter.dev/icon.png"
