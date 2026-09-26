@@ -3,7 +3,7 @@
 <!-- Smithery /badge/ returned 500 as of 2026-09-12; restore when they fix it. -->
 [![Smithery](https://img.shields.io/badge/Smithery-dammyg%2Fcallmeter-0F172A?style=flat)](https://smithery.ai/servers/dammyg/callmeter)
 
-> **First paid job:** parse a receipt → structured JSON for **~$0.10 via x402 USDC on Base**. Try the public demo https://api.callmeter.dev/demo/receipt-to-json then pay on `tools/call`. `tools/list` is free. Prepaid fiat (Paystack/Flutterwave) **unavailable**.
+> **Near-term paid hop:** draft or validate JSON Schema (`transform.json_schema` ≈ **$0.02**) via x402 USDC on Base. Unpaid `tools/call` → HTTP 402. `tools/list` is free. Receipt→JSON (`parse.receipt` ≈ **$0.10**) remains demo/depth — https://api.callmeter.dev/demo/receipt-to-json. Prepaid fiat (Paystack/Flutterwave) **unavailable**.
 
 **CallMeter** is an MCP / API gateway of **useful machine work** for AI agents — jobs like **receipt → JSON**, schema transform, schema breaking-change detect, structured extract, screenshots, PDF text, invoice parsing, and durable webhook ingress/replay.
 

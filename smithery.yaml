@@ -22,16 +22,19 @@ startCommand:
 metadata:
   displayName: CallMeter
   description: >-
-    First paid job: parse a receipt → structured JSON ≈ $0.10 via x402 USDC on Base.
-    Demo (free to try the UX): https://api.callmeter.dev/demo/receipt-to-json
-    Pay path: unpaid tools/call or POST /v1/docintel/extract/receipt → HTTP 402 → settle x402 on Base. Discovery: https://api.callmeter.dev/.well-known/x402
-    Signup (API key / ledger identity; no card checkout): https://api.callmeter.dev/signup
+    Near-term paid hop: draft or validate JSON Schema (transform.json_schema ≈ $0.02)
+    via x402 USDC on Base. Unpaid tools/call or POST /v1/agentutils/schema → HTTP 402.
+    Discovery: https://api.callmeter.dev/.well-known/x402
 
-    CallMeter is crypto-only by default. Prepaid fiat (Paystack/Flutterwave) is unavailable until CallMeter-native fiat returns. Existing prepaid balances still debit if present; new charges use x402.
+    Receipt→JSON (parse.receipt ≈ $0.10) remains demo/depth —
+    demo: https://api.callmeter.dev/demo/receipt-to-json
 
-    Also: schema breaking-change check ≈ $0.05 (detect.schema_breaking_changes / POST /v1/agentutils/diff). tools/list is free; tools/call is paid. Fail-closed — never charged on failed fulfillment.
+    CallMeter is crypto-only by default. Prepaid fiat packs are closed. Existing prepaid
+    balances still debit if present; new charges use x402. tools/list is free; tools/call
+    is paid. Fail-closed — never charged on failed fulfillment.
 
     MCP: https://api.callmeter.dev/mcp
+    Do NOT use callmeter.run.tools for unpaid→402 (Smithery OAuth 401).
   homepage: https://api.callmeter.dev/
   repository: https://github.com/dammy/callmeter
   license: MIT
